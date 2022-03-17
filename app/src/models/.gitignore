@@ -1,0 +1,4 @@
+#Models specific ignores
+*.gltf
+*.bin
+*.materials
