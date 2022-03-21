@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://materials/black.tres" type="Material" id=1]
-[ext_resource path="res://materials/lifeboat.tres" type="Material" id=2]
-[ext_resource path="res://effects/fire/life_boat_fire.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/life_boat.gd" type="Script" id=4]
+[ext_resource path="res://materials/Black_Diffuse.tres" type="Material" id=1]
+[ext_resource path="res://materials/LifeBoat.tres" type="Material" id=2]
+[ext_resource path="res://effects/LifeBoat_JetStream.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/LifeBoat.gd" type="Script" id=4]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.975515
@@ -33,31 +33,27 @@ surfaces/1 = {
 "vertex_count": 152
 }
 
-[node name="life_boat" type="KinematicBody"]
+[node name="LifeBoat" type="RigidBody"]
+gravity_scale = 0.0
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.26962, -6.82107e-10, 3.49246e-10, 1.63249e-09, 1.26962, 0, 3.69016e-10, -7.68784e-11, 1.34149, 2.06977e-05, 3.2071e-06, 0.0247269 )
 shape = SubResource( 1 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.999999, 8.19389e-05, 0.00144262, -0.000101429, 0.991947, -0.12665, -0.00144138, -0.12665, -0.991946, 0.00130815, 1.20076, -4.17593 )
-
-[node name="life_boat" type="MeshInstance" parent="."]
-transform = Transform( 1, 7.84368e-11, 5.82077e-11, 6.75584e-11, 1, 0, 5.82077e-11, -2.91038e-11, 1, 0, 0, 0 )
+[node name="LifeBoat" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
-skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
 material/1 = ExtResource( 1 )
 
-[node name="fire" parent="life_boat" instance=ExtResource( 3 )]
+[node name="LifeBoat_JetStream" parent="." instance=ExtResource( 3 )]
 transform = Transform( -7.72707e-09, -6.24823e-10, 0.177414, -0.0154626, 0.176738, 2.25562e-11, -0.176738, -0.0154626, -7.75617e-09, -4.53959e-05, 0.919205, -1.017 )
 
-[node name="fire2" parent="life_boat" instance=ExtResource( 3 )]
+[node name="LifeBoat_JetStream2" parent="." instance=ExtResource( 3 )]
 transform = Transform( -7.72548e-09, 6.75892e-10, 0.177413, 0.0154626, 0.176738, 0, -0.176738, 0.0154626, -7.75497e-09, 7.26318e-05, -0.905529, -1.017 )
 
-[node name="fire3" parent="life_boat" instance=ExtResource( 3 )]
+[node name="LifeBoat_JetStream3" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.0154626, 0.176738, -7.91204e-09, -2.54659e-11, -7.53539e-09, -0.177413, -0.176739, -0.0154626, 6.63931e-10, 0.924, 1.16415e-10, -1.017 )
 
-[node name="fire4" parent="life_boat" instance=ExtResource( 3 )]
+[node name="LifeBoat_JetStream4" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.0154626, 0.176738, -7.72547e-09, 0, -7.75499e-09, -0.177413, -0.176739, 0.0154626, -6.75891e-10, -0.924, 0.004, -1.017 )

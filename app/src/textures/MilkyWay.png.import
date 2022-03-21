@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/milky_way.png-1a4e2808c5650410013ae12df9cbb5a7.stex"
+path="res://.import/MilkyWay.png-a1b1dcbd0099ec0bb8d1603480d4933d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/milky_way.png"
-dest_files=[ "res://.import/milky_way.png-1a4e2808c5650410013ae12df9cbb5a7.stex" ]
+source_file="res://textures/MilkyWay.png"
+dest_files=[ "res://.import/MilkyWay.png-a1b1dcbd0099ec0bb8d1603480d4933d.stex" ]
 
 [params]
 
