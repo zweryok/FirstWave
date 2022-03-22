@@ -12,13 +12,12 @@ func _ready():
 	pass
 
 func get_input(_delta):
-	if Input.is_action_pressed("ui_r"):
-		thrust = 10;
-		$LifeBoat_JetStream.show(); $LifeBoat_JetStream2.show(); $LifeBoat_JetStream3.show(); $LifeBoat_JetStream4.show()
-	else:
-		thrust=0; pitch_input=0; yaw_input=0; roll_input=0
-		$LifeBoat_JetStream.hide(); $LifeBoat_JetStream2.hide(); $LifeBoat_JetStream3.hide(); $LifeBoat_JetStream4.hide()
-	if Input.is_action_pressed("ui_f"):
+	
+	thrust=0; pitch_input=0; yaw_input=0; roll_input=0
+	$LifeBoat_JetStream.hide(); $LifeBoat_JetStream2.hide(); $LifeBoat_JetStream3.hide(); $LifeBoat_JetStream4.hide()
+	if Input.is_action_pressed("ui_acceleration"):
+		thrust = 10; $LifeBoat_JetStream.show(); $LifeBoat_JetStream2.show(); $LifeBoat_JetStream3.show(); $LifeBoat_JetStream4.show()
+	if Input.is_action_pressed("ui_braking"):
 		thrust = -5
 	if Input.is_action_pressed("ui_up"):
 		pitch_input -=1; $LifeBoat_JetStream2.show()

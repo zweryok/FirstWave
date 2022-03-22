@@ -3,17 +3,12 @@
 [ext_resource path="res://materials/Location_Cosmos.tres" type="Environment" id=1]
 [ext_resource path="res://models/transport/LifeBoat.tscn" type="PackedScene" id=2]
 
-[sub_resource type="PlaneMesh" id=6]
+[sub_resource type="SphereMesh" id=1]
 
 [node name="LocationCosmos" type="Node"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 105.154, 0, 0, 0, 105.154, 2.81943e-11, 0, 1.13687e-11, 313.889, 0, -44.2844, 2.72848e-12 )
-mesh = SubResource( 6 )
-skeleton = NodePath("")
-material/0 = null
-
 [node name="LifeBoat" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6282.33, 0, 0 )
 
 [node name="Position3D_InterpolatedCamera" type="Position3D" parent="LifeBoat"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2, -4.2 )
@@ -21,9 +16,15 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2,
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.2, -4.2 )
 current = true
+far = 10000.0
 target = NodePath("../LifeBoat/Position3D_InterpolatedCamera")
 speed = 7.0
 enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 4954.44, 0, 0, 0, 4954.44, 0, 0, 0, 4954.44, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
