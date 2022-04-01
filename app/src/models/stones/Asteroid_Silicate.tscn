@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/White_Diffuse.tres" type="Material" id=1]
+[ext_resource path="res://physics/PhysicsSpaceBodies.tres" type="PhysicsMaterial" id=3]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SphereShape" id=2]
+
+[node name="Asteroid_Silicate" type="RigidBody"]
+physics_material_override = ExtResource( 3 )
+gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )

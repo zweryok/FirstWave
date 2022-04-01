@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Asteroid",
+"language": "GDScript",
+"path": "res://scripts/Location_Cosmos.gd"
+} ]
+_global_script_class_icons={
+"Asteroid": ""
+}
+
 [application]
 
 config/name="FirstWave"
@@ -69,6 +79,8 @@ ui_braking={
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 
 [rendering]
 
