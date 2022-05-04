@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://LocationOrbit/test_rastoyanie1.gltf" type="PackedScene" id=1]
+[ext_resource path="res://transport/LifeBoat/LifeBoat_Space.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LocationOrbit/RingOfSimbad/RingOfSimbad.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1 )
+
+[node name="Location_Orbit" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="RemoteTransform" type="RemoteTransform" parent="."]
+remote_path = NodePath("../Node/AsteroidEmitterBase")
+update_rotation = false
+update_scale = false
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.480177, 0.877171, 0, -0.877171, -0.480177, 0, 74.8234, 0 )
+projection = 1
+size = 80.0
+far = 10000.0
+
+[node name="Player" type="Spatial" parent="."]
+
+[node name="LifeBoat" parent="Player" instance=ExtResource( 4 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0 )
+
+[node name="Position3D_InterpolatedCamera" type="Position3D" parent="Player/LifeBoat"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.198, -10.9883 )
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="Player"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.0272984, -0.215791 )
+current = true
+near = 0.01
+far = 300.0
+target = NodePath("../LifeBoat/Position3D_InterpolatedCamera")
+speed = 7.0
+enabled = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.0128104, 0.999918, 0, -0.999918, -0.0128104, -5299.68, 3973.77, 0 )
+visible = false
+
+[node name="RingOfSimbad" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AsteroidEmitterBase" type="Spatial" parent="Node"]
+transform = Transform( 0, 0, 0, 0, 0, 0, -4.47035e-09, 0, 0.0999999, 0, 0, 0 )
+
+[node name="AsteroidEmitter" type="Position3D" parent="Node/AsteroidEmitterBase"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Node/AsteroidEmitterBase/AsteroidEmitter"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="TimerEmitter" type="Timer" parent="Node/AsteroidEmitterBase"]
+
+[node name="Area" type="Area" parent="Node/AsteroidEmitterBase"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Node/AsteroidEmitterBase/Area"]
+transform = Transform( 347.526, 0, 0, 0, 347.526, 0, 0, 0, 347.526, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="AsteroidEmitterFrontal" type="Position3D" parent="Node"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0178758, 0.0579919, 5.95106 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Node/AsteroidEmitterFrontal"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="TimerEmitterFrontal" type="Timer" parent="Node/AsteroidEmitterFrontal"]
+
+[node name="RemoteTransform" type="RemoteTransform" parent="Node"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0178758, 0.0579919, -0.0184898 )
+remote_path = NodePath("../AsteroidEmitterBase")
+update_rotation = false
+update_scale = false
+
+[node name="test_rastoyanie1" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[connection signal="timeout" from="Node/AsteroidEmitterBase/TimerEmitter" to="Node/AsteroidEmitterBase" method="_on_Timer_timeout"]
+[connection signal="body_exited" from="Node/AsteroidEmitterBase/Area" to="Node/AsteroidEmitterBase" method="_on_Area_body_exited"]
+[connection signal="timeout" from="Node/AsteroidEmitterFrontal/TimerEmitterFrontal" to="Node/AsteroidEmitterFrontal" method="_on_TimerEmitterFrontal_timeout"]

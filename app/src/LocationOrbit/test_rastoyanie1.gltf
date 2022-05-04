@@ -1,0 +1,100 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 28800,
+            "max" : [
+                0.012041939422488213,
+                0.012041939422488213,
+                0.0120391845703125
+            ],
+            "min" : [
+                -0.012041939422488213,
+                -0.012041939422488213,
+                -103.96653747558594
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 28800,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 28800,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 43200,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 345600,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 345600,
+            "byteOffset" : 345600
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 230400,
+            "byteOffset" : 691200
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 86400,
+            "byteOffset" : 921600
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1008000,
+            "uri" : "test_rastoyanie1.bin"
+        }
+    ]
+}

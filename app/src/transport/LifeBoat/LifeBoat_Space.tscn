@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://materials/Black_Diffuse.tres" type="Material" id=1]
+[ext_resource path="res://materials/White_Diffuse.tres" type="Material" id=2]
+[ext_resource path="res://transport/LifeBoat/LifeBoat.gd" type="Script" id=3]
+[ext_resource path="res://transport/LifeBoat/LifeBoat.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://transport/LifeBoat/LifeBoat_JetStream.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.975515
+
+[node name="LifeBoat" type="RigidBody"]
+mass = 1400.0
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.2
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.27, -1.63298e-09, -3.77846e-10, 1.63298e-09, 1.27, 7.8718e-11, 3.69126e-10, -7.69014e-11, 1.3, 0, 0, 0.0180242 )
+shape = SubResource( 1 )
+
+[node name="LifeBoat_JetStream" parent="." instance=ExtResource( 5 )]
+transform = Transform( -7.72707e-09, -6.24823e-10, 0.177414, -0.0154626, 0.176738, 2.25562e-11, -0.176738, -0.0154626, -7.75617e-09, -4.53959e-05, 0.919205, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -7.72548e-09, 6.75892e-10, 0.177413, 0.0154626, 0.176738, 0, -0.176738, 0.0154626, -7.75497e-09, 7.26318e-05, -0.905529, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream3" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.0154626, 0.176738, -7.91204e-09, -2.54659e-11, -7.53539e-09, -0.177413, -0.176739, -0.0154626, 6.63931e-10, 0.924, 1.16415e-10, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.0154626, 0.176738, -7.72547e-09, 0, -7.75499e-09, -0.177413, -0.176739, 0.0154626, -6.75891e-10, -0.924, 0.004, -1.017 )
+visible = false
+
+[node name="LifeBoat" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 1 )

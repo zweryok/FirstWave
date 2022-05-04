@@ -1,5 +1,0 @@
-#Models specific ignores
-*.gltf
-*.gltf.import
-*.bin
-*.materials

@@ -8,26 +8,12 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "Asteroid",
-"language": "GDScript",
-"path": "res://scripts/Location_Cosmos.gd"
-} ]
-_global_script_class_icons={
-"Asteroid": ""
-}
-
 [application]
 
 config/name="FirstWave"
 config/description="MMO Horror Sci-fi SurvivalSimulator NFT GameFi Play-to-Earn +16"
-run/main_scene="res://scenes/Location_Orbit.tscn"
+run/main_scene="res://LocationOrbit/LocationOrbit.tscn"
 config/icon="res://icon.png"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/MultiMeshBatcher/plugin.cfg" )
 
 [filesystem]
 
