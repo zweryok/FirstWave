@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://LifeBoat/Lifeboat.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://LifeBoat/LifeBoat_JetStream.tscn" type="PackedScene" id=2]
+[ext_resource path="res://LifeBoat/LifeBoat.gd" type="Script" id=3]
+
+[sub_resource type="SphereShape" id=1]
+
+[node name="Lifeboat" type="RigidBody"]
+mass = 1500.0
+gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 3 )
+
+[node name="Lifeboat" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.26565, 0, 0, 0, 1.26565, 0, 0, 0, 1.26565, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="LifeBoat_JetStream" parent="." instance=ExtResource( 2 )]
+transform = Transform( -7.70747e-09, -6.74317e-10, 0.177, -0.0154266, 0.176326, 0, -0.176326, -0.0154266, -7.73692e-09, 0, 0.919, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -7.70747e-09, 6.74317e-10, 0.177, 0.0154266, 0.176326, 0, -0.176326, 0.0154266, -7.73692e-09, 0, -0.919, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream3" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.0154266, 0.176326, -7.70747e-09, 0, -7.73692e-09, -0.177, -0.176326, -0.0154266, 6.74318e-10, 0.924, 0, -1.017 )
+visible = false
+
+[node name="LifeBoat_JetStream4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0154266, 0.176326, -7.70747e-09, 0, -7.73692e-09, -0.177, -0.176326, 0.0154266, -6.74317e-10, -0.924, 0, -1.017 )
+visible = false
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.71221, -3.0775 )
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.71221, -3.0775 )
+target = NodePath("../Position3D")
+speed = 7.0
