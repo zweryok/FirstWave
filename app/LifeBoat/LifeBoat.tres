@@ -1,0 +1,11 @@
+[gd_resource type="VisualShader" format=3 uid="uid://chxxr8bhmk5sg"]
+
+[resource]
+code = "shader_type spatial;
+
+
+"
+engine_version = {
+"major": 4,
+"minor": 0
+}

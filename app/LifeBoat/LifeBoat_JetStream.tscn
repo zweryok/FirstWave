@@ -1,90 +1,92 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://dt2y5in1ethhm"]
 
-[ext_resource path="res://LifeBoat/Smoke.png" type="Texture" id=1]
-[ext_resource path="res://LifeBoat/Fire.png" type="Texture" id=2]
+[ext_resource type="Texture2D" uid="uid://bk233x4j5eagp" path="res://LifeBoat/Smoke.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dboppwa1j8nw4" path="res://LifeBoat/Fire.png" id="2"]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="1"]
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_texture = ExtResource( "2" )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 2 )
 
-[sub_resource type="QuadMesh" id=7]
+[sub_resource type="QuadMesh" id="7"]
 
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0.00185185, 0.511364 ), 0.0, 0.0, 0, 0, Vector2( 0.331481, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.994444, 0.493182 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="4"]
+_data = [Vector2(0.00185185, 0.511364), 0.0, 0.0, 0, 0, Vector2(0.331481, 1), 0.0, 0.0, 0, 0, Vector2(0.994444, 0.493182), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.620462, 0.887789 )
-colors = PoolColorArray( 0, 0.392157, 1, 1, 0.0156863, 0.0470588, 0.305882, 1, 0.027451, 0.188235, 0.360784, 1 )
+[sub_resource type="Gradient" id="2"]
+offsets = PackedFloat32Array(0, 0.620462, 0.887789)
+colors = PackedColorArray(0, 0.392157, 1, 1, 0.0156863, 0.0470588, 0.305882, 1, 0.027451, 0.188235, 0.360784, 1)
 
-[sub_resource type="SpatialMaterial" id=10]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="10"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_texture = ExtResource( "1" )
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_texture = ExtResource( 1 )
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id="12"]
 min_value = 2.0
-max_value = 10.0
+max_value = 4.0
 bake_resolution = 10
-_data = [ Vector2( 0, 3.00909 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+_data = [Vector2(0, 4), 0.0, -2.5, 0, 1, Vector2(1, 1.5), -2.5, 0.0, 1, 0]
+point_count = 2
 
-[sub_resource type="Gradient" id=11]
-offsets = PoolRealArray( 0, 0.175127, 0.439086, 1 )
-colors = PoolColorArray( 0, 0, 0, 0, 0.639216, 0.341176, 0.341176, 0.847059, 0.319149, 0.319149, 0.319149, 1, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="11"]
+offsets = PackedFloat32Array(0, 0.175127, 0.439086, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.639216, 0.341176, 0.341176, 0.847059, 0.319149, 0.319149, 0.319149, 1, 1, 1, 1, 0)
 
-[node name="LifeBoat_JetStream" type="Spatial"]
+[node name="LifeBoat_JetStream" type="Node3D"]
 
-[node name="Flame" type="CPUParticles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 4.8, 0, 0, 0 )
-material_override = SubResource( 1 )
+[node name="Flame" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.8, 0, 0, 0)
+material_override = SubResource( "1" )
 amount = 12
 speed_scale = 2.42
 explosiveness = 0.34
-mesh = SubResource( 7 )
-emission_shape = 1
-emission_sphere_radius = 0.2
+mesh = SubResource( "7" )
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.15)
 spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1.0
-angular_velocity = 30.0
-angular_velocity_random = 1.0
-linear_accel = 4.0
-angle = 360.0
-angle_random = 1.0
-scale_amount = 3.0
-scale_amount_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource( "4" )
+color_ramp = SubResource( "2" )
 
-[node name="Smoke" type="CPUParticles" parent="."]
-transform = Transform( 0.997112, 0, 0, 0, 0.997112, 0, 0, 0, 0.997112, 3.015, 0, 0 )
-material_override = SubResource( 10 )
+[node name="Smoke" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.997112, 0, 0, 0, 0.997112, 0, 0, 0, 0.997112, 3.015, 0, 0)
+material_override = SubResource( "10" )
 amount = 21
 lifetime = 2.0
 speed_scale = 1.5
-mesh = SubResource( 7 )
-emission_shape = 3
-emission_points = PoolVector3Array(  )
-emission_colors = PoolColorArray(  )
+mesh = SubResource( "7" )
 spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
-angular_velocity = 45.0
-angular_velocity_random = 1.0
-linear_accel = 4.0
-angle = 360.0
-angle_random = 1.0
-scale_amount = 2.0
-scale_amount_random = 0.4
-scale_amount_curve = SubResource( 12 )
-color_ramp = SubResource( 11 )
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+angular_velocity_max = 45.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+angle_max = 360.0
+scale_amount_min = 1.6
+scale_amount_max = 2.0
+scale_amount_curve = SubResource( "12" )
+color_ramp = SubResource( "11" )

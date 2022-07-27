@@ -1,33 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://dm6r5wfs2lv7s"]
 
-[ext_resource path="res://LifeBoat/LifeBoat.tscn" type="PackedScene" id=1]
+[ext_resource type="PackedScene" uid="uid://f0r3tla21mk7" path="res://LifeBoat/LifeBoat.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://b0d12mra50d01" path="res://LocationOrbit/world.exr" id="1_v1ri3"]
+[ext_resource type="PackedScene" uid="uid://gughf1g23ny1" path="res://LocationOrbit/Location_Orbit.glb" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://b27bi0xrjd7ms" path="res://test/123.res" id="4_xfhar"]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_du38h"]
+panorama = ExtResource( "1_v1ri3" )
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="Sky" id="Sky_kpvhy"]
+sky_material = SubResource( "PanoramaSkyMaterial_du38h" )
 
-[node name="Lifeboat" parent="." instance=ExtResource( 1 )]
+[sub_resource type="Environment" id="4"]
+background_mode = 2
+sky = SubResource( "Sky_kpvhy" )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.96734 )
-mesh = SubResource( 1 )
-material/0 = null
+[sub_resource type="BoxMesh" id="1"]
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.6584 )
-mesh = SubResource( 1 )
-material/0 = null
+[sub_resource type="ConcavePolygonShape3D" id="2"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
 
-[node name="MeshInstance3" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.0263 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="Spatial" type="Node3D"]
 
-[node name="MeshInstance4" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 83.4939 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "4" )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.934348, 0, 0.356363, 0, 1, 0, -0.356363, 0, -0.934348, 11.1327, -1.14441e-05, -18.3753 )
-current = true
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.194132, 0.980976, 0, -0.980976, 0.194132, 0, 0, 0)
+light_color = Color(0.12549, 0.172549, 0.4, 1)
+
+[node name="Location_Orbit" parent="." instance=ExtResource( "2" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Spatial" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15027.1)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Spatial"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.5)
+mesh = SubResource( "1" )
+
+[node name="StaticBody" type="StaticBody3D" parent="Spatial/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Spatial/MeshInstance/StaticBody"]
+shape = SubResource( "2" )
+
+[node name="Lifeboat" parent="." instance=ExtResource( "1" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15000)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lifeboat"]
+transform = Transform3D(608.396, 0, 0, 0, 476.332, 0, 0, 0, 608.396, 0, 0, 0)
+mesh = ExtResource( "4_xfhar" )
+
+[editable path="Location_Orbit"]
